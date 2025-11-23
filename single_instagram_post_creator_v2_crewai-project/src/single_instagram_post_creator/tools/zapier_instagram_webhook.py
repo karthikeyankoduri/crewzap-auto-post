@@ -43,7 +43,7 @@ class ZapierInstagramWebhookTool(BaseTool):
             str: Success confirmation or error message with details
         """
         
-        webhook_url = "https://hooks.zapier.com/hooks/catch/25461153/uzfgb5n/"
+        webhook_url = ""
         timestamp = datetime.now().isoformat()
         
         try:
