@@ -1,0 +1,138 @@
+---
+generate_single_post_content_idea:
+  description: |-
+    Research current trending topics in {industry} and create ONE high-quality, engaging Instagram post idea for {brand_name}. Focus on creating the best possible single post that will resonate with the target audience and drive engagement.
+
+    **Research Requirements:**
+    - Analyze current trending topics in {industry}
+    - Check competitor content for inspiration
+    - Identify viral content patterns and themes
+
+    **Content Creation:**
+    - Generate ONE compelling post idea with engaging caption
+    - Include detailed visual description for AI image generation
+    - Add relevant hashtags and call-to-action
+    - Ensure brand voice consistency for {brand_name}
+    - Optimize for Instagram engagement
+  expected_output: |-
+    A single, high-quality Instagram post concept containing:
+
+    **Post Content:**
+    - Engaging caption (with emojis if appropriate)
+    - 5-10 relevant hashtags
+    - Clear call-to-action
+    - Brand voice alignment for {brand_name}
+
+    **Visual Description:**
+    - Detailed description for AI image generation
+    - Style, colors, composition guidelines
+    - Brand aesthetic considerations
+    - Instagram-optimized format recommendations
+
+    **Strategy Notes:**
+    - Why this content will perform well
+    - Target audience appeal
+    - Trending topic connection
+    - Expected engagement type
+  agent: social_media_content_strategist
+create_single_instagram_image:
+  description: |-
+    Based on the generated content idea, create ONE high-quality, realistic image using AI image generation for the Instagram post. Focus on creating a visually stunning image that perfectly complements the post content and aligns with {brand_name}'s aesthetic.
+
+    **Image Requirements:**
+    - Instagram-optimized format (square 1:1 ratio preferred)
+    - High visual impact and engagement potential
+    - Brand-consistent style and colors
+    - Professional quality and composition
+    - Realistic and appealing to target audience
+  expected_output: |-
+    A single, high-quality AI-generated image with detailed documentation:
+
+    **Image Details:**
+    - Generated image with Instagram-optimized specifications
+    - Detailed description of visual elements
+    - Style and composition analysis
+    - Brand alignment confirmation
+
+    **Technical Specifications:**
+    - Format: Square (1:1) for Instagram feed
+    - Quality: High resolution
+    - Style: Professional and engaging
+    - Brand consistency: Confirmed
+
+    **Usage Guidelines:**
+    - Suggested caption integration
+    - Alt text description for accessibility
+    - Engagement optimization notes
+  agent: visual_content_creator
+  context:
+  - generate_single_post_content_idea
+send_content_to_zapier_webhook:
+  description: |-
+    Send the generated Instagram post content to the Zapier webhook for automated posting to @kskk.2031. Use the Zapier Instagram Webhook Tool to transmit all post details.
+
+    **WEBHOOK INSTRUCTIONS:**
+    1. **Use the Zapier Instagram Webhook Tool with these parameters:**
+       - content: [Generated caption with call-to-action]
+       - preferred_posting_time: {preferred_posting_time}
+       - timezone: {timezone}
+       - media_urls: [Include any AI-generated image URLs if available]
+       - hashtags: [Extract hashtags from content if separate]
+       - brand_name: {brand_name}
+
+    2. **Webhook URL**: https://hooks.zapier.com/hooks/catch/25461153/uzfgb5n/
+       (This is handled automatically by the tool)
+
+    3. **Data Formatting:**
+       - Ensure content is properly formatted
+       - Include complete post caption
+       - Add media URLs if images are available
+       - Specify exact posting time and timezone
+
+    4. **Success Confirmation:**
+       - Confirm webhook received the data (HTTP 200 response)
+       - Report the exact timestamp of webhook delivery
+       - Verify all content was transmitted correctly
+  expected_output: |-
+    A successful webhook delivery confirmation with complete details:
+
+    **✅ CONTENT SUCCESSFULLY SENT TO ZAPIER WEBHOOK**
+
+    **Delivery Confirmation:**
+    - Webhook Status: HTTP 200 - Success
+    - Delivery Timestamp: [Exact timestamp when sent]
+    - Zapier Webhook URL: hooks.zapier.com/hooks/catch/25461153/uzfgb5n
+    - Target Account: @kskk.2031
+
+    **Content Sent:**
+    - Caption: "[First 100 characters of content]..."
+    - Preferred Posting Time: {preferred_posting_time} ({timezone})
+    - Media URLs: [List any image URLs sent, or "None" if text-only]
+    - Hashtags Included: [Yes/No]
+    - Brand Name: {brand_name}
+
+    **JSON Payload Summary:**
+    ```json
+    {
+      "content": "Post content with hashtags...",
+      "preferred_posting_time": "time",
+      "timezone": "timezone",
+      "account": "@kskk.2031",
+      "post_type": "feed"
+    }
+    ```
+
+    **Next Steps:**
+    - Zapier will automatically process this data
+    - Instagram post will be created/scheduled via Zapier automation
+    - Monitor @kskk.2031 for the published post
+    - Check Zapier dashboard for automation execution status
+
+    **If webhook delivery failed, provide:**
+    - HTTP error code
+    - Error message details
+    - Troubleshooting recommendations
+  agent: content_publishing_manager
+  context:
+  - generate_single_post_content_idea
+  - create_single_instagram_image
